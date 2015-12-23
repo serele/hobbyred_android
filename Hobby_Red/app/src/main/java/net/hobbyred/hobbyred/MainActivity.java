@@ -9,6 +9,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause(){
         super.onPause();
+
+        // Logs 'app deactivate' App Event. (Facebook)
+        AppEventsLogger.deactivateApp(this);
+
         if(myWebView != null){
             myWebView.onPause();
             myWebView.pauseTimers();
@@ -81,9 +86,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
+        // Logs 'install' and 'app activate' App Events. (Facebook)
+        AppEventsLogger.activateApp(this);
+
         if(myWebView != null){
             myWebView.onResume();
             myWebView.resumeTimers();
         }
+
+
     }
 }
