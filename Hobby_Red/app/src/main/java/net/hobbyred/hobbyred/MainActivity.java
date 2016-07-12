@@ -14,7 +14,7 @@ import com.facebook.appevents.AppEventsLogger;
 public class MainActivity extends AppCompatActivity {
 
     private WebView myWebView;
-    private String url = "http://www.hobbyred.net";
+    private String url = "http://www.planandplay.net";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
